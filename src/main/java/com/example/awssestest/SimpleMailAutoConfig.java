@@ -19,7 +19,7 @@ public class SimpleMailAutoConfig {
                 .withCredentials(credentialsProvider)
                 // Replace US_WEST_2 with the AWS Region you're using for
                 // Amazon SES.
-                .withRegion(Regions.US_WEST_2).build();
+                .withRegion(Regions.EU_WEST_1).build();
     }
 
     @Bean

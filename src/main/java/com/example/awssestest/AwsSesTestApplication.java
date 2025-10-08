@@ -31,8 +31,8 @@ public class AwsSesTestApplication {
         MailSender sender = context.getBean(AwsSesTestApplication.class).mailSender;
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("<YOUR EMAIL>@gmail.com");
-        message.setTo("<YOUR EMAIL>@gmail.com");
+        message.setFrom("bilgi@mersinarslannakliyat.com");
+        message.setTo("sevketemingurbuz6@gmail.com");
         message.setSubject("Hello SES");
         message.setText("Body text - Java");
         sender.send(message);
