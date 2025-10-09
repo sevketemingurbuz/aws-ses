@@ -11,31 +11,11 @@ import org.springframework.mail.SimpleMailMessage;
 @SpringBootApplication
 public class AwsSesTestApplication {
 
-    private final MailSender mailSender;
 
-    @Autowired
-    public AwsSesTestApplication(MailSender mailSender) {
-        this.mailSender = mailSender;
-    }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(AwsSesTestApplication.class, args);
-        try {
-            doSendEmailWith(context);
-        } finally {
-            context.close();
-        }
+        SpringApplication.run(AwsSesTestApplication.class, args);
     }
 
-    private static void doSendEmailWith(ApplicationContext context) {
-        MailSender sender = context.getBean(AwsSesTestApplication.class).mailSender;
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("bilgi@mersinarslannakliyat.com");
-        message.setTo("sevketemingurbuz6@gmail.com");
-        message.setSubject("Hello SES");
-        message.setText("Body text - Java");
-        sender.send(message);
-        System.out.println("Message Sent");
-    }
+  
 }
