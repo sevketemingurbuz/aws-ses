@@ -1,6 +1,9 @@
 package com.example.awssestest;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -17,12 +20,13 @@ public class EmailService {
     public EmailService(MailSender mailSender) {
         this.mailSender = mailSender;
     }
-    
+    @Value("${SET_TO}")
+    private String to;
     public void doSendEmailWith(EmailRequest emailRequest) {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("bilgi@mersinarslannakliyat.com");
-        message.setTo("${SET_TO}");
+        message.setTo(to);
         message.setSubject(emailRequest.getSubject() + " - " + emailRequest.getName());
         message.setText(emailRequest.getMessage() + "\n\n" + emailRequest.getPhone());
         mailSender.send(message);
